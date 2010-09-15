@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Server.DigestService" CodeBehind="DigestService.svc.cs" Factory="Server.DigestServiceHostFactory" %>
+
+
