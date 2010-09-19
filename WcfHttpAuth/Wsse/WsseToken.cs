@@ -16,7 +16,7 @@ namespace WcfHttpAuth.Wsse
         {
             get 
             {
-                return DateTime.Parse(Created, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).ToUniversalTime();
+                return UtcUtils.FromUtcString(Created);
             }
         }
         public string Nonce { get; set; }

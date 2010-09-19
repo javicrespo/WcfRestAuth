@@ -73,6 +73,7 @@
     <Compile Include="RequestContextUtils.cs" />
     <Compile Include="SecurityContextManager.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="UtcUtils.cs" />
     <Compile Include="Wsse\IPasswordProvider.cs" />
     <Compile Include="PrincipalAuthorizationPolicy.cs" />
     <Compile Include="ITimestampRangeValidator.cs" />

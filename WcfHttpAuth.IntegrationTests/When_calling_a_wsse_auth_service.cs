@@ -52,8 +52,8 @@ namespace WcfHttpAuth.IntegrationTests
                     .WithWsseToken(new WsseToken 
                     {
                         Username = "user", 
-                        Nonce = Guid.NewGuid().ToString(), 
-                        Created = DateTime.UtcNow.AddHours(-2).ToString("s")
+                        Nonce = Guid.NewGuid().ToString(),
+                        Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(-2))
                     }, "password")
                     .GetResponse();
 
@@ -75,7 +75,7 @@ namespace WcfHttpAuth.IntegrationTests
                     {
                         Username = "user",
                         Nonce = Guid.NewGuid().ToString(),
-                        Created = DateTime.UtcNow.AddHours(2).ToString("s")
+                        Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(2))
                     }, "password")
                     .GetResponse();
 
