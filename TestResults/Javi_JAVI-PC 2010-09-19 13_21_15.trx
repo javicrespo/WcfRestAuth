@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="5e54b91e-155d-43b9-a143-24789ae8bde4" name="Javi@JAVI-PC 2010-09-19 13:21:15" runUser="Javi-PC\Javi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="da34d0b4-0511-46eb-bb91-669de211e68e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Code\WcfHttpAuth\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Javi_JAVI-PC 2010-09-19 13_21_15">
+      <DeploymentItem filename="C:\Code\WcfHttpAuth\WcfHttpAuth\bin\Debug\WcfHttpAuth.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-09-19T13:21:15.9522659+02:00" queuing="2010-09-19T13:21:17.7423683+02:00" start="2010-09-19T13:21:17.9323792+02:00" finish="2010-09-19T13:21:38.8185738+02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="JAVI-PC" outcome="Error" timestamp="2010-09-19T13:21:38.8175738+02:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Given_credentials_are_invalid_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="66708f93-7293-f476-715a-1f4ac9ebac9e">
+      <Execution id="e13c205d-8e98-41ac-b52b-0468bed73d6e" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_invalid_then_should_return_401" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="66708f93-7293-f476-715a-1f4ac9ebac9e" executionId="e13c205d-8e98-41ac-b52b-0468bed73d6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="e13c205d-8e98-41ac-b52b-0468bed73d6e" testId="66708f93-7293-f476-715a-1f4ac9ebac9e" testName="Given_credentials_are_invalid_then_should_return_401" computerName="JAVI-PC" duration="00:00:20.7221852" startTime="2010-09-19T13:21:18.0963886+02:00" endTime="2010-09-19T13:21:38.8185738+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e13c205d-8e98-41ac-b52b-0468bed73d6e">
+    </UnitTestResult>
+  </Results>
+</TestRun>

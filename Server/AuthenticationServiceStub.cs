@@ -31,7 +31,7 @@ namespace Server
 
         public string RetrieveServerDigest(string username)
         {
-            return DigestUtils.GenerateServerDigest("http://tst.com", "javi", "password");
+            return DigestUtils.GenerateServerDigest("http://tst.com", "user", "password");
         }
     }
 }

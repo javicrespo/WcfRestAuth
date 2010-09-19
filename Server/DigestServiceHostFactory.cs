@@ -17,7 +17,7 @@ namespace Server
             var result = new WebServiceHost2(serviceType, true, baseAddresses);
 
             result.Interceptors.Add(
-                new DigestRequestInterceptor(new AuthenticationServiceStub("javi","password"), "http://tst.com"));
+                new DigestRequestInterceptor(new AuthenticationServiceStub("user","password"), "http://tst.com"));
             return result;
         }
     }

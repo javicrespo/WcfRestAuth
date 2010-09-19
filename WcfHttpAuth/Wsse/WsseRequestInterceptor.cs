@@ -31,6 +31,19 @@ namespace WcfHttpAuth.Wsse
         {
             Provider = provider;
             Realm = realm;
+            TimestampRangeValidator = new TimestampRangeValidator();
+        }
+
+        public WsseRequestInterceptor(IPasswordProvider provider, string realm, ITimestampRangeValidator timestampRangevalidator)
+            :this(provider, realm)
+        {
+            TimestampRangeValidator = timestampRangevalidator;
+        }
+
+        protected ITimestampRangeValidator TimestampRangeValidator
+        {
+            get;
+            private set;
         }
 
         protected string Realm
@@ -55,19 +68,34 @@ namespace WcfHttpAuth.Wsse
         /// <param name="requestContext">The request context.</param>
         public override void ProcessRequest(ref RequestContext requestContext)
         {
-            var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
-            var wsseToken = ExtractToken(httpRequest);
-            if (wsseToken != null && AuthenticateUser(wsseToken))
+            try
             {
-                SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage, 
-                                                                                    wsseToken.Username);
+                var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
+                var wsseToken = ExtractToken(httpRequest);
+                if (wsseToken != null && 
+                    AuthenticateUser(wsseToken) && 
+                    TimestampRangeValidator.ValidateTimestamp(wsseToken.CreatedDate))
+                {
+
+                    SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
+                                                                                        wsseToken.Username);
+                }
+                else
+                {
+                    Unauthorized(ref requestContext);
+                }
             }
-            else
+            catch
             {
-                RequestContextUtils.Unauthorized(ref requestContext,
-                                                 String.Format("WSSE realm=\"{0}\", profile=\"UsernameToken\"", 
-                                                                Realm));
+                Unauthorized(ref requestContext);
             }
+        }
+
+        private void Unauthorized(ref RequestContext requestContext)
+        {
+            RequestContextUtils.Unauthorized(ref requestContext,
+                                                         String.Format("WSSE realm=\"{0}\", profile=\"UsernameToken\"",
+                                                                        Realm));
         }
 
         private bool AuthenticateUser(WsseToken wsseToken)

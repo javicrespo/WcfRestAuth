@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="504f2893-15d7-4baf-a6ae-83f5ccce704f" name="Javi@JAVI-PC 2010-09-19 13:26:22" runUser="Javi-PC\Javi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="da34d0b4-0511-46eb-bb91-669de211e68e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Javi_JAVI-PC 2010-09-19 13_26_22">
+      <DeploymentItem filename="C:\Code\WcfHttpAuth\WcfHttpAuth\bin\Debug\WcfHttpAuth.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-09-19T13:26:22.6938106+02:00" queuing="2010-09-19T13:26:22.7258124+02:00" start="2010-09-19T13:26:22.7418133+02:00" finish="2010-09-19T13:26:24.1488938+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="3" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Given_credentials_are_valid_then_should_return_200" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e">
+      <Execution id="45f250a9-2111-4572-a962-109f0b58bc14" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_valid_then_should_return_200" />
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_valid_then_should_return_200" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5">
+      <Execution id="0c7a865d-86e4-4e97-89c4-242b76c4b5b0" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_valid_then_should_return_200" />
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_invalid_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="66708f93-7293-f476-715a-1f4ac9ebac9e">
+      <Execution id="22688d08-9e56-43e1-955d-73a7a3d7b4fb" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_invalid_then_should_return_401" />
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_invalid_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="9566efb0-741c-90b7-c3af-168c9f4ebed6">
+      <Execution id="bbb61037-3088-4e14-ab88-15de327ac2f5" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_invalid_then_should_return_401" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5" executionId="0c7a865d-86e4-4e97-89c4-242b76c4b5b0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66708f93-7293-f476-715a-1f4ac9ebac9e" executionId="22688d08-9e56-43e1-955d-73a7a3d7b4fb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9566efb0-741c-90b7-c3af-168c9f4ebed6" executionId="bbb61037-3088-4e14-ab88-15de327ac2f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e" executionId="45f250a9-2111-4572-a962-109f0b58bc14" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0c7a865d-86e4-4e97-89c4-242b76c4b5b0" testId="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5" testName="Given_credentials_are_valid_then_should_return_200" computerName="JAVI-PC" duration="00:00:01.0795732" startTime="2010-09-19T13:26:22.7428134+02:00" endTime="2010-09-19T13:26:24.0638889+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c7a865d-86e4-4e97-89c4-242b76c4b5b0">
+    </UnitTestResult>
+    <UnitTestResult executionId="22688d08-9e56-43e1-955d-73a7a3d7b4fb" testId="66708f93-7293-f476-715a-1f4ac9ebac9e" testName="Given_credentials_are_invalid_then_should_return_401" computerName="JAVI-PC" duration="00:00:00.0074739" startTime="2010-09-19T13:26:24.0668891+02:00" endTime="2010-09-19T13:26:24.0798898+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22688d08-9e56-43e1-955d-73a7a3d7b4fb">
+    </UnitTestResult>
+    <UnitTestResult executionId="bbb61037-3088-4e14-ab88-15de327ac2f5" testId="9566efb0-741c-90b7-c3af-168c9f4ebed6" testName="Given_credentials_are_invalid_then_should_return_401" computerName="JAVI-PC" duration="00:00:00.0034988" startTime="2010-09-19T13:26:24.0818899+02:00" endTime="2010-09-19T13:26:24.0908905+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbb61037-3088-4e14-ab88-15de327ac2f5">
+    </UnitTestResult>
+    <UnitTestResult executionId="45f250a9-2111-4572-a962-109f0b58bc14" testId="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e" testName="Given_credentials_are_valid_then_should_return_200" computerName="JAVI-PC" duration="00:00:00.0238225" startTime="2010-09-19T13:26:24.0928906+02:00" endTime="2010-09-19T13:26:24.1218922+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45f250a9-2111-4572-a962-109f0b58bc14">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_valid_then_should_return_200 threw exception: 
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.</Message>
+          <StackTrace>    at System.Net.HttpWebRequest.GetResponse()
+   at WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_valid_then_should_return_200() in C:\Code\WcfHttpAuth\WcfHttpAuth.IntegrationTests\When_calling_a_basic_auth_service.cs:line 38
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

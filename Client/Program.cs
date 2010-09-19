@@ -18,7 +18,7 @@ namespace Client
             try
             {
                 var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
-                    .WithWsseToken("javi", "password")
+                    .WithWsseToken("user", "password")
                     .GetResponse();
 
                 using (var readStream = new StreamReader(response.GetResponseStream()))
@@ -42,7 +42,7 @@ namespace Client
             Console.WriteLine("\n\nBasic");
 
             var request = WebRequest.Create("http://localhost:2391/BasicService.svc/HelloWorld");
-            request.Credentials = new NetworkCredential("javi", "password");
+            request.Credentials = new NetworkCredential("user", "password");
             try
             {
                 using (var readStream = new StreamReader(request.GetResponse().GetResponseStream()))

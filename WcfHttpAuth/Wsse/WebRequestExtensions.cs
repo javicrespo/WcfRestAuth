@@ -13,7 +13,7 @@ namespace WcfHttpAuth.Wsse
             var wsseToken = new WsseToken 
             { 
                 Username = userName, 
-                Created = DateTime.Now.ToString(), 
+                Created = DateTime.UtcNow.ToString("s"), 
                 Nonce = Guid.NewGuid().ToString()
             };
 

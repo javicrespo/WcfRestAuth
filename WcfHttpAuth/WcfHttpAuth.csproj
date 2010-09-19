@@ -69,11 +69,14 @@
     <Compile Include="Digest\DigestRequestInterceptor.cs" />
     <Compile Include="Digest\DigestUtils.cs" />
     <Compile Include="Digest\IServerDigestProvider.cs" />
+    <Compile Include="INonceCache.cs" />
     <Compile Include="RequestContextUtils.cs" />
     <Compile Include="SecurityContextManager.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Wsse\IPasswordProvider.cs" />
     <Compile Include="PrincipalAuthorizationPolicy.cs" />
+    <Compile Include="ITimestampRangeValidator.cs" />
+    <Compile Include="TimestampRangeValidator.cs" />
     <Compile Include="Wsse\WebRequestExtensions.cs" />
     <Compile Include="Wsse\WsseRequestInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

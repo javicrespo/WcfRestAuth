@@ -56,19 +56,32 @@ namespace WcfHttpAuth.Digest
         /// <param name="requestContext">The request context.</param>
         public override void ProcessRequest(ref RequestContext requestContext)
         {
-            var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
-            var digestToken = ExtractToken(httpRequest);
-            if (digestToken != null && AuthenticateUser(digestToken, httpRequest.Method))
+            try
             {
-                SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
-                                                                                    digestToken.Username);
+                var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
+                var digestToken = ExtractToken(httpRequest);
+                if (digestToken != null && AuthenticateUser(digestToken, httpRequest.Method))
+                {
+                    SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
+                                                                                        digestToken.Username);
+                }
+                else
+                {
+                    Unauthorized(ref requestContext);
+                }
             }
-            else
+            catch
             {
-                RequestContextUtils.Unauthorized(ref requestContext,
-                                String.Format("Digest realm=\"{0}\",qop=\"{1}\",nonce=\"{2}\",opaque=\"{3}\"",
-                                                        Realm, "auth", Guid.NewGuid(), Guid.NewGuid()));
+                Unauthorized(ref requestContext);
             }
+        }
+
+        private void Unauthorized(ref RequestContext requestContext)
+        {
+            RequestContextUtils.Unauthorized(ref requestContext,
+                            String.Format("Digest realm=\"{0}\",qop=\"{1}\",nonce=\"{2}\",opaque=\"{3}\"",
+                                                    Realm, "auth", Guid.NewGuid(), Guid.NewGuid()));
+            requestContext = null;
         }
 
         private bool AuthenticateUser(DigestToken token, string httpMethod)
