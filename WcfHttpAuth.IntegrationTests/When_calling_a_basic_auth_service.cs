@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
 using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
 namespace WcfHttpAuth.IntegrationTests
 {
@@ -12,6 +13,7 @@ namespace WcfHttpAuth.IntegrationTests
     public class When_calling_a_basic_auth_service
     {
         [TestMethod]
+        //[AspNetDevelopmentServer("Server", @"..\Server","http://locahost:3000")]
         public void Given_credentials_are_invalid_then_should_return_401()
         {
             var request = WebRequest.Create("http://localhost:2391/BasicService.svc/HelloWorld");
@@ -30,6 +32,7 @@ namespace WcfHttpAuth.IntegrationTests
         }
 
         [TestMethod]
+        //[AspNetDevelopmentServer("Server", @"..\Server", "http://locahost:3000")]
         public void Given_credentials_are_valid_then_should_return_200()
         {
             var request = WebRequest.Create("http://localhost:2391/BasicService.svc/HelloWorld");

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d92b998f-e199-48fd-86d7-e5030851b78a" name="Javi@JAVI-PC 2010-09-19 13:39:38" runUser="Javi-PC\Javi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="da34d0b4-0511-46eb-bb91-669de211e68e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Javi_JAVI-PC 2010-09-19 13_39_38">
+      <DeploymentItem filename="C:\Code\WcfHttpAuth\WcfHttpAuth\bin\Debug\WcfHttpAuth.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-09-19T13:39:38.4663261+02:00" queuing="2010-09-19T13:39:38.4993280+02:00" start="2010-09-19T13:39:38.5123288+02:00" finish="2010-09-19T13:39:47.7928596+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" error="0" failed="4" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Given_credentials_are_valid_then_should_return_200" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e">
+      <Execution id="372664d5-51e2-4a37-8afa-cf620936d26b" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_valid_then_should_return_200" />
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_valid_then_should_return_200" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5">
+      <Execution id="de8a927e-30a8-420c-a283-574baad4feb8" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_valid_then_should_return_200" />
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_invalid_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="66708f93-7293-f476-715a-1f4ac9ebac9e">
+      <Execution id="1b160081-a418-4afc-a000-62d38dbbebe4" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_invalid_then_should_return_401" />
+      <AspNetDevelopmentServers>
+        <DevelopmentServer name="localhost" pathToWebApp="..\Server" />
+      </AspNetDevelopmentServers>
+    </UnitTest>
+    <UnitTest name="Given_credentials_are_invalid_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="9566efb0-741c-90b7-c3af-168c9f4ebed6">
+      <Execution id="31d5dc39-fdfa-4e3e-a4f8-89e18eff86b8" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_credentials_are_invalid_then_should_return_401" />
+      <AspNetDevelopmentServers>
+        <DevelopmentServer name="localhost" pathToWebApp="..\Server" />
+      </AspNetDevelopmentServers>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5" executionId="de8a927e-30a8-420c-a283-574baad4feb8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66708f93-7293-f476-715a-1f4ac9ebac9e" executionId="1b160081-a418-4afc-a000-62d38dbbebe4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9566efb0-741c-90b7-c3af-168c9f4ebed6" executionId="31d5dc39-fdfa-4e3e-a4f8-89e18eff86b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e" executionId="372664d5-51e2-4a37-8afa-cf620936d26b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="de8a927e-30a8-420c-a283-574baad4feb8" testId="3d5a2998-aebd-79e2-bb3a-f979cf6d64b5" testName="Given_credentials_are_valid_then_should_return_200" computerName="JAVI-PC" duration="00:00:02.0745986" startTime="2010-09-19T13:39:38.5153289+02:00" endTime="2010-09-19T13:39:40.8354616+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="de8a927e-30a8-420c-a283-574baad4feb8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service.Given_credentials_are_valid_then_should_return_200 threw exception: 
+System.Net.WebException: Unable to connect to the remote server ---&gt; System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:2391</Message>
+          <StackTrace>    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket&amp; socket, IPAddress&amp; address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception&amp; exception)
+ --- End of inner exception stack trace ---
+    at System.Net.HttpWebRequest.GetResponse()
+   at WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service.Given_credentials_are_valid_then_should_return_200() in C:\Code\WcfHttpAuth\WcfHttpAuth.IntegrationTests\When_calling_a_wsse_auth_service.cs:line 41
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1b160081-a418-4afc-a000-62d38dbbebe4" testId="66708f93-7293-f476-715a-1f4ac9ebac9e" testName="Given_credentials_are_invalid_then_should_return_401" computerName="JAVI-PC" duration="00:00:02.0086449" startTime="2010-09-19T13:39:41.6125061+02:00" endTime="2010-09-19T13:39:43.6306215+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1b160081-a418-4afc-a000-62d38dbbebe4">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_invalid_then_should_return_401 threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_invalid_then_should_return_401() in C:\Code\WcfHttpAuth\WcfHttpAuth.IntegrationTests\When_calling_a_basic_auth_service.cs:line 30
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="31d5dc39-fdfa-4e3e-a4f8-89e18eff86b8" testId="9566efb0-741c-90b7-c3af-168c9f4ebed6" testName="Given_credentials_are_invalid_then_should_return_401" computerName="JAVI-PC" duration="00:00:02.0273593" startTime="2010-09-19T13:39:43.6336217+02:00" endTime="2010-09-19T13:39:45.6707382+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31d5dc39-fdfa-4e3e-a4f8-89e18eff86b8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service.Given_credentials_are_invalid_then_should_return_401 threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service.Given_credentials_are_invalid_then_should_return_401() in C:\Code\WcfHttpAuth\WcfHttpAuth.IntegrationTests\When_calling_a_wsse_auth_service.cs:line 33
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="372664d5-51e2-4a37-8afa-cf620936d26b" testId="d2c4f2ed-2807-a47b-bc9e-9a4b6401e12e" testName="Given_credentials_are_valid_then_should_return_200" computerName="JAVI-PC" duration="00:00:02.0060259" startTime="2010-09-19T13:39:45.6727383+02:00" endTime="2010-09-19T13:39:47.6928539+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="372664d5-51e2-4a37-8afa-cf620936d26b">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_valid_then_should_return_200 threw exception: 
+System.Net.WebException: Unable to connect to the remote server ---&gt; System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:2391</Message>
+          <StackTrace>    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket&amp; socket, IPAddress&amp; address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception&amp; exception)
+ --- End of inner exception stack trace ---
+    at System.Net.HttpWebRequest.GetResponse()
+   at WcfHttpAuth.IntegrationTests.When_calling_a_basic_auth_service.Given_credentials_are_valid_then_should_return_200() in C:\Code\WcfHttpAuth\WcfHttpAuth.IntegrationTests\When_calling_a_basic_auth_service.cs:line 40
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

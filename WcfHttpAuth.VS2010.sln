@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WcfHttpAuth.VS2010.vsmdi = WcfHttpAuth.VS2010.vsmdi
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{06DE03D0-566E-4EF0-9FDC-C1BB30B281C3}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WcfHttpAuth.VS2010.vsmdi
@@ -72,5 +74,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB57D9A2-B349-45A4-9793-F9B04DD0C5C7} = {06DE03D0-566E-4EF0-9FDC-C1BB30B281C3}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="636fee5a-2b95-464c-b899-c6ba1102841e" name="Javi@JAVI-PC 2010-09-19 16:52:08" runUser="Javi-PC\Javi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="da34d0b4-0511-46eb-bb91-669de211e68e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Code\WcfHttpAuth\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Javi_JAVI-PC 2010-09-19 16_52_08">
+      <DeploymentItem filename="C:\Code\WcfHttpAuth\WcfHttpAuth\bin\Debug\WcfHttpAuth.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-09-19T16:52:08.4679484+02:00" queuing="2010-09-19T16:52:08.6209572+02:00" start="2010-09-19T16:52:08.6629596+02:00" finish="2010-09-19T16:52:51.9794372+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Given_timestamp_is_above_the_approved_threshold_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="5d878050-317c-80e9-9104-b446890bd937">
+      <Execution id="c206f40b-a51f-45cd-b630-47beca12f3d6" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_timestamp_is_above_the_approved_threshold_then_should_return_401" />
+    </UnitTest>
+    <UnitTest name="Given_timestamp_is_below_the_approved_threshold_then_should_return_401" storage="c:\code\wcfhttpauth\wcfhttpauth.integrationtests\bin\debug\wcfhttpauth.integrationtests.dll" id="ba1b1b35-e1e2-2b9b-09cc-5b51b77ffa91">
+      <Execution id="d9c66657-87c4-47bc-96f7-0562f3498ec0" />
+      <TestMethod codeBase="C:/Code/WcfHttpAuth/WcfHttpAuth.IntegrationTests/bin/Debug/WcfHttpAuth.IntegrationTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="WcfHttpAuth.IntegrationTests.When_calling_a_wsse_auth_service, WcfHttpAuth.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Given_timestamp_is_below_the_approved_threshold_then_should_return_401" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="5d878050-317c-80e9-9104-b446890bd937" executionId="c206f40b-a51f-45cd-b630-47beca12f3d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ba1b1b35-e1e2-2b9b-09cc-5b51b77ffa91" executionId="d9c66657-87c4-47bc-96f7-0562f3498ec0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c206f40b-a51f-45cd-b630-47beca12f3d6" testId="5d878050-317c-80e9-9104-b446890bd937" testName="Given_timestamp_is_above_the_approved_threshold_then_should_return_401" computerName="JAVI-PC" duration="00:00:27.9502915" startTime="2010-09-19T16:52:08.6719601+02:00" endTime="2010-09-19T16:52:36.9335766+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c206f40b-a51f-45cd-b630-47beca12f3d6">
+    </UnitTestResult>
+    <UnitTestResult executionId="d9c66657-87c4-47bc-96f7-0562f3498ec0" testId="ba1b1b35-e1e2-2b9b-09cc-5b51b77ffa91" testName="Given_timestamp_is_below_the_approved_threshold_then_should_return_401" computerName="JAVI-PC" duration="00:00:14.9268724" startTime="2010-09-19T16:52:36.9345766+02:00" endTime="2010-09-19T16:52:51.8754312+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d9c66657-87c4-47bc-96f7-0562f3498ec0">
+    </UnitTestResult>
+  </Results>
+</TestRun>

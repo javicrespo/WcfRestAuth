@@ -17,6 +17,11 @@ namespace WcfHttpAuth.Wsse
                 Nonce = Guid.NewGuid().ToString()
             };
 
+            return WithWsseToken(request, wsseToken, password);
+        }
+
+        internal static WebRequest WithWsseToken(this WebRequest request, WsseToken wsseToken, string password)
+        {
             wsseToken.Calculate(password);
 
             request.Headers.Add(Constants.AuthorizationHeader, "WSSE profile=\"UsernameToken\"");
