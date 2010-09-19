@@ -65,11 +65,13 @@
     <Compile Include="Basic\BasicRequestInterceptor.cs" />
     <Compile Include="Basic\IAuthenticationService.cs" />
     <Compile Include="Basic\BasicToken.cs" />
+    <Compile Include="Digest\DigestSession.cs" />
     <Compile Include="Digest\DigestToken.cs" />
     <Compile Include="Digest\DigestRequestInterceptor.cs" />
     <Compile Include="Digest\DigestUtils.cs" />
     <Compile Include="Digest\IServerDigestProvider.cs" />
     <Compile Include="INonceCache.cs" />
+    <Compile Include="NonceGenerator.cs" />
     <Compile Include="RequestContextUtils.cs" />
     <Compile Include="SecurityContextManager.cs" />
     <Compile Include="Constants.cs" />

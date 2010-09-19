@@ -91,7 +91,7 @@ namespace WcfHttpAuth.Digest
 
         private static DigestToken ExtractToken(HttpRequestMessageProperty request)
         {
-            var authHeader = request.Headers[Constants.AuthorizationHeader];
+            var authHeader = request.Headers[HttpRequestHeader.Authorization];
 
             if (authHeader != null && authHeader.StartsWith("Digest"))
             {

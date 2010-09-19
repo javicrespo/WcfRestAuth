@@ -8,7 +8,7 @@ namespace WcfHttpAuth.Digest
 {
     public static class DigestUtils
     {
-        public static string GenerateServerDigest(string realm, string username, string password)
+        public static string GenerateUserDigest(string realm, string username, string password)
         {
             var text1 = string.Format("{0}:{1}:{2}", username, realm, password);
             var encoding = Encoding.GetEncoding(Constants.Enconding);

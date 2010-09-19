@@ -14,7 +14,7 @@ namespace WcfHttpAuth.Wsse
             { 
                 Username = userName, 
                 Created = UtcUtils.UtcNowString(), 
-                Nonce = Guid.NewGuid().ToString()
+                Nonce = NonceGenerator.Generate()
             };
 
             return WithWsseToken(request, wsseToken, password);
@@ -24,7 +24,7 @@ namespace WcfHttpAuth.Wsse
         {
             wsseToken.Calculate(password);
 
-            request.Headers.Add(Constants.AuthorizationHeader, "WSSE profile=\"UsernameToken\"");
+            request.Headers.Add(HttpRequestHeader.Authorization, "WSSE profile=\"UsernameToken\"");
             request.Headers.Add("X-WSSE", string.Format("UsernameToken UserName=\"{0}\", Created=\"{1}\", Nonce=\"{2}\", PasswordDigest=\"{3}\"",
                                                                     wsseToken.Username, wsseToken.Created, wsseToken.Nonce, wsseToken.PasswordDigest));
             return request;

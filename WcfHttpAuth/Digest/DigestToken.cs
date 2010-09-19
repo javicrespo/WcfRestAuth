@@ -22,21 +22,29 @@ namespace WcfHttpAuth.Digest
         public string Path { get; set; }
 
 
-        public bool Verify(string serverDigest, string httpMethod)
+        public bool Verify(string userDigest, string httpMethod)
         {
-            return Digest == CalculateDigest(serverDigest, httpMethod);
+            return Digest == CalculateDigestFromUserDigest(userDigest, httpMethod);
         }
 
-        private string CalculateDigest(string serverDigest, string httpMethod)
+        public void CalculateDigest(string realm, string username, string password, string httpMethod)
+        {
+
+            Digest = CalculateDigestFromUserDigest(DigestUtils.GenerateUserDigest(realm, username, password), httpMethod);
+        }
+
+        private string CalculateDigestFromUserDigest(string userDigest, string httpMethod)
         {
             var text1 = string.Format("{0}:{1}", httpMethod, Path);
             var encoding = Encoding.GetEncoding(Constants.Enconding);
             var md5 = new MD5CryptoServiceProvider();
-            var digest1 = BitConverter.ToString(md5.ComputeHash(encoding.GetBytes(text1))).Replace("-", "").ToLower();
+            var digest1 = DigestUtils.ToHexString(md5.ComputeHash(encoding.GetBytes(text1)));
 
             var text2 = string.Format("{0}:{1}:{2}:{3}:{4}:{5}",
-                                        serverDigest, Nonce, SequenceNumber, ClientNonce, "auth", digest1);
+                                        userDigest, Nonce, SequenceNumber, ClientNonce, "auth", digest1);
             return DigestUtils.ToHexString(md5.ComputeHash(encoding.GetBytes(text2)));
         }
+
+       
     }
 }

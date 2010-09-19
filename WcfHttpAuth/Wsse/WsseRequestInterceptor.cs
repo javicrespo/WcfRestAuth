@@ -106,7 +106,7 @@ namespace WcfHttpAuth.Wsse
 
         private static WsseToken ExtractToken(HttpRequestMessageProperty request)
         {
-            var authHeader = request.Headers[Constants.AuthorizationHeader];
+            var authHeader = request.Headers[HttpRequestHeader.Authorization];
             var wsseHeader = request.Headers["X-WSSE"];
 
             if (authHeader != null && authHeader.StartsWith("WSSE profile=\"UsernameToken\"") &&

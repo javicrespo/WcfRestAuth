@@ -77,7 +77,7 @@ namespace WcfHttpAuth.Basic
 
         private static BasicToken ExtractToken(HttpRequestMessageProperty request)
         {
-            var authHeader = request.Headers[Constants.AuthorizationHeader];
+            var authHeader = request.Headers[HttpRequestHeader.Authorization];
 
             if (authHeader != null && authHeader.StartsWith("Basic"))
             {

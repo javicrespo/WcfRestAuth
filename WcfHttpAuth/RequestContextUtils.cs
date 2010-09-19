@@ -15,7 +15,7 @@ namespace WcfHttpAuth
             var reply = Message.CreateMessage(MessageVersion.None, null);
             var responseProperty = new HttpResponseMessageProperty() { StatusCode = HttpStatusCode.Unauthorized };
 
-            responseProperty.Headers.Add(Constants.NonAuthorizedHeader,
+            responseProperty.Headers.Add(HttpResponseHeader.WwwAuthenticate,
                                          nonauthorizedHeaderValue);
 
             reply.Properties[HttpResponseMessageProperty.Name] = responseProperty;

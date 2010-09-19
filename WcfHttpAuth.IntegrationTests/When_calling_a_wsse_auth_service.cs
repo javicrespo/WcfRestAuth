@@ -23,7 +23,6 @@ namespace WcfHttpAuth.IntegrationTests
                     .WithWsseToken("user", "fakepassword")
                     .GetResponse();
 
-                using (var readStream = new StreamReader(response.GetResponseStream())) { }
             }
             catch (WebException ex)
             {
@@ -38,9 +37,6 @@ namespace WcfHttpAuth.IntegrationTests
             var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
                 .WithWsseToken("user", "password")
                 .GetResponse();
-
-            using (var readStream = new StreamReader(response.GetResponseStream())) { }
-
         }
 
         [TestMethod]
@@ -52,12 +48,10 @@ namespace WcfHttpAuth.IntegrationTests
                     .WithWsseToken(new WsseToken 
                     {
                         Username = "user", 
-                        Nonce = Guid.NewGuid().ToString(),
+                        Nonce = NonceGenerator.Generate(),
                         Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(-2))
                     }, "password")
                     .GetResponse();
-
-                using (var readStream = new StreamReader(response.GetResponseStream())) { }
             }
             catch (WebException ex)
             {
@@ -74,12 +68,10 @@ namespace WcfHttpAuth.IntegrationTests
                     .WithWsseToken(new WsseToken
                     {
                         Username = "user",
-                        Nonce = Guid.NewGuid().ToString(),
+                        Nonce = NonceGenerator.Generate(),
                         Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(2))
                     }, "password")
                     .GetResponse();
-
-                using (var readStream = new StreamReader(response.GetResponseStream())) { }
             }
             catch (WebException ex)
             {
