@@ -28,10 +28,23 @@ namespace WcfHttpAuth.Digest
         /// <param name="provider">The provider.</param>
         /// <param name="realm">The realm.</param>
         public DigestRequestInterceptor(IServerDigestProvider provider, string realm)
+            : this(provider, realm, new InMemoryNonceStore())
+        {
+
+        }
+
+        public DigestRequestInterceptor(IServerDigestProvider provider, string realm, INonceStore nonceStore)
             : base(false)
         {
             Provider = provider;
             Realm = realm;
+            NonceStore = nonceStore;
+        }
+
+        protected INonceStore NonceStore
+        {
+            get;
+            private set;
         }
 
         protected string Realm
@@ -60,7 +73,9 @@ namespace WcfHttpAuth.Digest
             {
                 var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
                 var digestToken = ExtractToken(httpRequest);
-                if (digestToken != null && AuthenticateUser(digestToken, httpRequest.Method))
+                if (digestToken != null &&
+                    AuthenticateUser(digestToken, httpRequest.Method) &&
+                    NonceStore.StoreNonceAndCheckIfItIsUnique(digestToken.ClientNonce))
                 {
                     SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
                                                                                         digestToken.Username);

@@ -17,6 +17,14 @@ namespace WcfHttpAuth.Digest
         private string realm;
         private string serverNonce;
 
+        //To be used in tests only
+        private Func<string> clientNonceGeneratorFunc = () => NonceGenerator.Generate();
+        internal Func<string> ClientNonceGeneratorFunc
+        {
+            get { return clientNonceGeneratorFunc; }
+            set { clientNonceGeneratorFunc = value; }
+        }
+
         public DigestSession(string url, string username, string password)
             :this(WebRequest.Create(url), username, password)
         {
@@ -50,7 +58,7 @@ namespace WcfHttpAuth.Digest
             sequenceNumber++;
             var token = new DigestToken
             {
-                ClientNonce = NonceGenerator.Generate(),
+                ClientNonce = ClientNonceGeneratorFunc.Invoke(),
                 Nonce = serverNonce,
                 Path = request.RequestUri.PathAndQuery,
                 SequenceNumber = sequenceNumber.ToString(),

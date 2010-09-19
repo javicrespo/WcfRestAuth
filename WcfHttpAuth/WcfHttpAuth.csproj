@@ -70,7 +70,8 @@
     <Compile Include="Digest\DigestRequestInterceptor.cs" />
     <Compile Include="Digest\DigestUtils.cs" />
     <Compile Include="Digest\IServerDigestProvider.cs" />
-    <Compile Include="INonceCache.cs" />
+    <Compile Include="InMemoryNonceStore.cs" />
+    <Compile Include="INonceStore.cs" />
     <Compile Include="NonceGenerator.cs" />
     <Compile Include="RequestContextUtils.cs" />
     <Compile Include="SecurityContextManager.cs" />

@@ -27,17 +27,31 @@ namespace WcfHttpAuth.Wsse
         /// <param name="provider">The provider.</param>
         /// <param name="realm">The realm.</param>
         public WsseRequestInterceptor(IPasswordProvider provider, string realm)
-            : base(false)
+            : this(provider, realm, new TimestampRangeValidator(), new InMemoryNonceStore())
         {
-            Provider = provider;
-            Realm = realm;
-            TimestampRangeValidator = new TimestampRangeValidator();
+           
         }
 
-        public WsseRequestInterceptor(IPasswordProvider provider, string realm, ITimestampRangeValidator timestampRangevalidator)
-            :this(provider, realm)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WsseRequestInterceptor"/> class.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="realm">The realm.</param>
+        /// <param name="timestampRangevalidator">The timestamp rangevalidator.</param>
+        /// <param name="nonceStore">The nonce store.</param>
+        public WsseRequestInterceptor(IPasswordProvider provider, string realm, ITimestampRangeValidator timestampRangevalidator, INonceStore nonceStore)
+            : base(false)
         {
             TimestampRangeValidator = timestampRangevalidator;
+            NonceStore = nonceStore;
+            Provider = provider;
+            Realm = realm;
+        }
+
+        protected INonceStore NonceStore
+        {
+            get;
+            private set;
         }
 
         protected ITimestampRangeValidator TimestampRangeValidator
@@ -74,7 +88,8 @@ namespace WcfHttpAuth.Wsse
                 var wsseToken = ExtractToken(httpRequest);
                 if (wsseToken != null && 
                     AuthenticateUser(wsseToken) && 
-                    TimestampRangeValidator.ValidateTimestamp(wsseToken.CreatedDate))
+                    TimestampRangeValidator.ValidateTimestamp(wsseToken.CreatedDate) &&
+                    NonceStore.StoreNonceAndCheckIfItIsUnique(wsseToken.Nonce))
                 {
 
                     SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,

@@ -13,29 +13,32 @@ namespace WcfHttpAuth.IntegrationTests
     [TestClass]
     public class When_calling_a_wsse_auth_service
     {
+        private const string ServiceUrl = "http://localhost:2391/WsseService.svc/HelloWorld";
         [TestMethod]
         //[AspNetDevelopmentServer("localhost:3000", @"..\Server")]
         public void Given_credentials_are_invalid_then_should_return_401()
         {
             try
             {
-                var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
-                    .WithWsseToken("user", "fakepassword")
+                var response = WebRequest.Create(ServiceUrl)
+                    .WithWsseToken(Constants.Username, Constants.BadPassword)
                     .GetResponse();
 
             }
             catch (WebException ex)
             {
                 Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
             }
+            Assert.Fail("It shouldn't have succeeded");
         }
 
         [TestMethod]
         public void Given_credentials_are_valid_then_should_return_200()
         {
 
-            var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
-                .WithWsseToken("user", "password")
+            var response = WebRequest.Create(ServiceUrl)
+                .WithWsseToken(Constants.Username, Constants.Password)
                 .GetResponse();
         }
 
@@ -44,19 +47,21 @@ namespace WcfHttpAuth.IntegrationTests
         {
             try
             {
-                var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
-                    .WithWsseToken(new WsseToken 
+                var response = WebRequest.Create(ServiceUrl)
+                    .WithWsseToken(new WsseToken
                     {
-                        Username = "user", 
+                        Username = Constants.Username,
                         Nonce = NonceGenerator.Generate(),
                         Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(-2))
-                    }, "password")
+                    }, Constants.Password)
                     .GetResponse();
             }
             catch (WebException ex)
             {
                 Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
             }
+            Assert.Fail("It shouldn't have succeeded");
         }
 
         [TestMethod]
@@ -64,19 +69,48 @@ namespace WcfHttpAuth.IntegrationTests
         {
             try
             {
-                var response = WebRequest.Create("http://localhost:2391/WsseService.svc/HelloWorld")
+                var response = WebRequest.Create(ServiceUrl)
                     .WithWsseToken(new WsseToken
                     {
-                        Username = "user",
+                        Username = Constants.Username,
                         Nonce = NonceGenerator.Generate(),
                         Created = UtcUtils.UtcString(DateTime.UtcNow.AddHours(2))
-                    }, "password")
+                    }, Constants.Password)
                     .GetResponse();
             }
             catch (WebException ex)
             {
                 Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
             }
+            Assert.Fail("It shouldn't have succeeded");
+        }
+
+        [TestMethod]
+        public void Given_message_is_replayed_then_should_return_401()
+        {
+
+            var token = new WsseToken
+                {
+                    Username = Constants.Username,
+                    Nonce = NonceGenerator.Generate(),
+                    Created = UtcUtils.UtcNowString()
+                };
+            WebRequest.Create(ServiceUrl)
+                .WithWsseToken(token, Constants.Password)
+                .GetResponse();
+            try
+            {
+                WebRequest.Create(ServiceUrl)
+                .WithWsseToken(token, Constants.Password)
+                .GetResponse();
+            }
+            catch (WebException ex)
+            {
+                Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
+            }
+            Assert.Fail("It shouldn't have succeeded");
         }
     }
 }
