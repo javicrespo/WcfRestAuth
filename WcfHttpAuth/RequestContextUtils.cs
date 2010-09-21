@@ -27,5 +27,15 @@ namespace WcfHttpAuth
         {
             return (HttpRequestMessageProperty)requestMessage.Properties[HttpRequestMessageProperty.Name];
         }
+
+        public static void NotImplemented(ref RequestContext context)
+        {
+            var reply = Message.CreateMessage(MessageVersion.None, null);
+            var responseProperty = new HttpResponseMessageProperty() { StatusCode = HttpStatusCode.NotImplemented };
+
+            reply.Properties[HttpResponseMessageProperty.Name] = responseProperty;
+            context.Reply(reply);
+            context = null;
+        }
     }
 }

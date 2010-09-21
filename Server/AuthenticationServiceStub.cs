@@ -5,6 +5,7 @@ using System.Web;
 using WcfHttpAuth.Basic;
 using WcfHttpAuth.Digest;
 using WcfHttpAuth.Wsse;
+using WcfHttpAuth;
 
 namespace Server
 {

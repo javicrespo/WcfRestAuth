@@ -87,9 +87,9 @@ namespace WcfHttpAuth.Wsse
                 var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
                 var wsseToken = ExtractToken(httpRequest);
                 if (wsseToken != null && 
-                    AuthenticateUser(wsseToken) && 
-                    TimestampRangeValidator.ValidateTimestamp(wsseToken.CreatedDate) &&
-                    NonceStore.StoreNonceAndCheckIfItIsUnique(wsseToken.Nonce))
+                    TimestampRangeValidator.ValidateTimestamp(wsseToken.CreatedDateUtc) &&
+                    NonceStore.StoreNonceAndCheckIfItIsUnique(wsseToken.Nonce) &&
+                    AuthenticateUser(wsseToken))
                 {
 
                     SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,

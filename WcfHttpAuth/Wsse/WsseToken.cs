@@ -12,7 +12,7 @@ namespace WcfHttpAuth.Wsse
         public string Username { get; set; }
         public string PasswordDigest { get; set; }
         public string Created { get; set; }
-        public DateTime CreatedDate
+        public DateTime CreatedDateUtc
         {
             get 
             {
