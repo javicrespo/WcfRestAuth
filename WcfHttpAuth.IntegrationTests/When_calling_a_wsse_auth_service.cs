@@ -14,8 +14,8 @@ namespace WcfHttpAuth.IntegrationTests
     public class When_calling_a_wsse_auth_service
     {
         private const string ServiceUrl = "http://localhost:2391/WsseService.svc/HelloWorld";
+        
         [TestMethod]
-        //[AspNetDevelopmentServer("localhost:3000", @"..\Server")]
         public void Given_credentials_are_invalid_then_should_return_401()
         {
             try

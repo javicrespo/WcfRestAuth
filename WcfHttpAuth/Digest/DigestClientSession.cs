@@ -8,14 +8,16 @@ using System.Text.RegularExpressions;
 
 namespace WcfHttpAuth.Digest
 {
-    public class DigestSession
+    public class DigestClientSession
     {
         private int sequenceNumber;
         private readonly string url;
         private readonly string username;
         private readonly string password;
         private string realm;
-        private string serverNonce;
+
+        internal string ServerNonce { get; set; }
+        internal string Opaque { get; set; }
 
         //To be used in tests only
         private Func<string> clientNonceGeneratorFunc = () => NonceGenerator.Generate();
@@ -25,13 +27,13 @@ namespace WcfHttpAuth.Digest
             set { clientNonceGeneratorFunc = value; }
         }
 
-        public DigestSession(string url, string username, string password)
+        public DigestClientSession(string url, string username, string password)
             :this(WebRequest.Create(url), username, password)
         {
             
         }
 
-        public DigestSession(WebRequest request, string username, string password)
+        public DigestClientSession(WebRequest request, string username, string password)
         {
             this.username = username;
             this.password = password;
@@ -59,7 +61,7 @@ namespace WcfHttpAuth.Digest
             var token = new DigestToken
             {
                 ClientNonce = ClientNonceGeneratorFunc.Invoke(),
-                Nonce = serverNonce,
+                ServerNonce = ServerNonce,
                 Path = request.RequestUri.PathAndQuery,
                 SequenceNumber = sequenceNumber.ToString(),
                 Username = username
@@ -68,7 +70,7 @@ namespace WcfHttpAuth.Digest
 
             request.Headers[HttpRequestHeader.Authorization] = 
                 String.Format(CultureInfo.InvariantCulture, "Digest username=\"{0}\", realm=\"{1}\", nonce=\"{2}\", uri=\"{3}\", response=\"{4}\", opaque=\"{5}\", qop=auth, nc={6}, cnonce=\"{7}\"",
-                                                            token.Username, realm, token.Nonce, token.Path, token.Digest, NonceGenerator.Generate(), token.SequenceNumber, token.ClientNonce);
+                                                            token.Username, realm, token.ServerNonce, token.Path, token.Digest, Opaque, token.SequenceNumber, token.ClientNonce);
             return request.GetResponse();
         }
 
@@ -93,13 +95,18 @@ namespace WcfHttpAuth.Digest
             if (!match.Groups["v"].Success)
                 throw new InvalidOperationException("During session negotiation, the server failed to provide a nonce");
 
-            serverNonce = match.Groups["v"].Value;
+            ServerNonce = match.Groups["v"].Value;
 
             match = new Regex("realm=\"(?<v>.*?)\"", RegexOptions.IgnoreCase).Match(authHeader);
             if (!match.Groups["v"].Success)
                 throw new InvalidOperationException("During session negotiation, the server failed to provide a realm value");
-
             realm = match.Groups["v"].Value;
+
+            match = new Regex("opaque=\"(?<v>.*?)\"", RegexOptions.IgnoreCase).Match(authHeader);
+            if (!match.Groups["v"].Success)
+                throw new InvalidOperationException("During session negotiation, the server failed to provide a realm value");
+
+            Opaque = match.Groups["v"].Value;
 
         }
     }

@@ -9,13 +9,18 @@ namespace WcfHttpAuth
     {
         private int maxNumberOfNonces = 5000;
 
-        public int MaxNumberOfNonces
+        public InMemoryNonceStore()
+            :this(5000)
         {
-            get { return maxNumberOfNonces; }
-            set { maxNumberOfNonces = value; }
+
+        }
+
+        public InMemoryNonceStore(int maxNumberOfNonces)
+        {
+            this.maxNumberOfNonces = maxNumberOfNonces;
         }
        
-        private static List<string> nonces = new List<string>();
+        private List<string> nonces = new List<string>();
 
 
         public bool StoreNonceAndCheckIfItIsUnique(string nonce)
@@ -24,7 +29,7 @@ namespace WcfHttpAuth
             {
                 lock (nonces)
                 {
-                    if (nonces.Count >= MaxNumberOfNonces)
+                    if (nonces.Count >= maxNumberOfNonces)
                     {
                         nonces.RemoveAt(0);
                     }

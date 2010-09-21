@@ -56,6 +56,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -65,11 +66,13 @@
     <Compile Include="Basic\BasicRequestInterceptor.cs" />
     <Compile Include="Basic\IAuthenticationService.cs" />
     <Compile Include="Basic\BasicToken.cs" />
-    <Compile Include="Digest\DigestSession.cs" />
+    <Compile Include="Digest\DigestClientSession.cs" />
     <Compile Include="Digest\DigestToken.cs" />
     <Compile Include="Digest\DigestRequestInterceptor.cs" />
     <Compile Include="Digest\DigestUtils.cs" />
+    <Compile Include="Digest\AspNetCacheDigestSessionStore.cs" />
     <Compile Include="Digest\IServerDigestProvider.cs" />
+    <Compile Include="Digest\IDigestSessionStore.cs" />
     <Compile Include="InMemoryNonceStore.cs" />
     <Compile Include="INonceStore.cs" />
     <Compile Include="NonceGenerator.cs" />

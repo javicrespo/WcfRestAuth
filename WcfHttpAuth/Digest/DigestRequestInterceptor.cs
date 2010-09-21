@@ -28,20 +28,26 @@ namespace WcfHttpAuth.Digest
         /// <param name="provider">The provider.</param>
         /// <param name="realm">The realm.</param>
         public DigestRequestInterceptor(IServerDigestProvider provider, string realm)
-            : this(provider, realm, new InMemoryNonceStore())
+            : this(provider, realm, new AspNetCacheSessionStore())
         {
 
         }
 
-        public DigestRequestInterceptor(IServerDigestProvider provider, string realm, INonceStore nonceStore)
+        public DigestRequestInterceptor(IServerDigestProvider provider, string realm, IDigestSessionStore digestSessionStore)
             : base(false)
         {
             Provider = provider;
             Realm = realm;
-            NonceStore = nonceStore;
+            DigestSessionStore = digestSessionStore;
         }
 
-        protected INonceStore NonceStore
+        protected INonceStore ClientNonceStore
+        {
+            get;
+            private set;
+        }
+
+        protected IDigestSessionStore DigestSessionStore
         {
             get;
             private set;
@@ -74,8 +80,8 @@ namespace WcfHttpAuth.Digest
                 var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
                 var digestToken = ExtractToken(httpRequest);
                 if (digestToken != null &&
-                    AuthenticateUser(digestToken, httpRequest.Method) &&
-                    NonceStore.StoreNonceAndCheckIfItIsUnique(digestToken.ClientNonce))
+                    DigestSessionStore.CheckIfServerNonceAndOpaqueExistAndStoreClientNonceIfNotExists(digestToken.ServerNonce, digestToken.Opaque, digestToken.ClientNonce) &&
+                    AuthenticateUser(digestToken, httpRequest.Method))
                 {
                     SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
                                                                                         digestToken.Username);
@@ -93,9 +99,12 @@ namespace WcfHttpAuth.Digest
 
         private void Unauthorized(ref RequestContext requestContext)
         {
+            string nonce = NonceGenerator.Generate(), opaque = NonceGenerator.Generate();
+            DigestSessionStore.Add(nonce, opaque);
             RequestContextUtils.Unauthorized(ref requestContext,
                             String.Format("Digest realm=\"{0}\",qop=\"{1}\",nonce=\"{2}\",opaque=\"{3}\"",
-                                                    Realm, "auth", Guid.NewGuid(), Guid.NewGuid()));
+                                                    Realm, "auth", nonce, opaque));
+
             requestContext = null;
         }
 
@@ -127,7 +136,7 @@ namespace WcfHttpAuth.Digest
             match = new Regex("nonce=\"(?<v>.*?)\"", RegexOptions.IgnoreCase).Match(digestHeader);
             if (!match.Groups["v"].Success)
                 return null;
-            result.Nonce = match.Groups["v"].Value;
+            result.ServerNonce = match.Groups["v"].Value;
 
             match = new Regex("uri=\"(?<v>.*?)\"", RegexOptions.IgnoreCase).Match(digestHeader);
             if (!match.Groups["v"].Success)
@@ -149,6 +158,10 @@ namespace WcfHttpAuth.Digest
                 return null;
             result.Digest = match.Groups["v"].Value;
 
+            match = new Regex("opaque=\"(?<v>.*?)\"", RegexOptions.IgnoreCase).Match(digestHeader);
+            if (!match.Groups["v"].Success)
+                return null;
+            result.Opaque = match.Groups["v"].Value;
 
             return result;
         }

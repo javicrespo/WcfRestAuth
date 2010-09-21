@@ -15,11 +15,13 @@ namespace WcfHttpAuth.Digest
 
         public string ClientNonce { get; set; }
 
-        public string Nonce { get; set; }
+        public string ServerNonce { get; set; }
 
         public string SequenceNumber { get; set; }
 
         public string Path { get; set; }
+
+        public string Opaque { get; set; }
 
 
         public bool Verify(string userDigest, string httpMethod)
@@ -41,9 +43,11 @@ namespace WcfHttpAuth.Digest
             var digest1 = DigestUtils.ToHexString(md5.ComputeHash(encoding.GetBytes(text1)));
 
             var text2 = string.Format("{0}:{1}:{2}:{3}:{4}:{5}",
-                                        userDigest, Nonce, SequenceNumber, ClientNonce, "auth", digest1);
+                                        userDigest, ServerNonce, SequenceNumber, ClientNonce, "auth", digest1);
             return DigestUtils.ToHexString(md5.ComputeHash(encoding.GetBytes(text2)));
         }
+
+
 
        
     }

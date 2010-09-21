@@ -18,7 +18,7 @@ namespace WcfHttpAuth.IntegrationTests
         [TestMethod]
         public void Given_credentials_are_invalid_then_should_return_401()
         {
-            var session = new DigestSession(ServiceUrl, Constants.Username, Constants.BadPassword);
+            var session = new DigestClientSession(ServiceUrl, Constants.Username, Constants.BadPassword);
             try
             {
                 using (session.ExecuteRequest()) { }
@@ -34,7 +34,7 @@ namespace WcfHttpAuth.IntegrationTests
         [TestMethod]
         public void Given_credentials_are_valid_then_should_return_200()
         {
-            var session = new DigestSession(ServiceUrl, Constants.Username, Constants.Password);
+            var session = new DigestClientSession(ServiceUrl, Constants.Username, Constants.Password);
 
             using (session.ExecuteRequest()) { }
         }
@@ -42,15 +42,51 @@ namespace WcfHttpAuth.IntegrationTests
         [TestMethod]
         public void Given_message_is_replayed_then_should_return_401()
         {
-            var session = new DigestSession(ServiceUrl, Constants.Username, Constants.Password);
-            
-            var guid = Guid.NewGuid().ToString();
+            var session = new DigestClientSession(ServiceUrl, Constants.Username, Constants.Password);
 
-            session.ClientNonceGeneratorFunc = () => { return guid; };
+            var nonce = NonceGenerator.Generate();
+
+            session.ClientNonceGeneratorFunc = () => { return nonce; };
 
             using (session.ExecuteRequest()) { }
             try
             {
+                using (session.ExecuteRequest()) { }
+            }
+            catch (WebException ex)
+            {
+                Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
+            }
+            Assert.Fail("It shouldn't have succeeded");
+        }
+
+        [TestMethod]
+        public void Given_server_nonce_is_not_valid_then_should_return_401()
+        {
+            var session = new DigestClientSession(ServiceUrl, Constants.Username, Constants.BadPassword);
+            try
+            {
+                //Overwrite server nonce
+                session.ServerNonce = NonceGenerator.Generate();
+                using (session.ExecuteRequest()) { }
+            }
+            catch (WebException ex)
+            {
+                Assert.AreEqual(HttpStatusCode.Unauthorized, ((HttpWebResponse)ex.Response).StatusCode);
+                return;
+            }
+            Assert.Fail("It shouldn't have succeeded");
+        }
+
+        [TestMethod]
+        public void Given_server_opaque_is_not_valid_then_should_return_401()
+        {
+            var session = new DigestClientSession(ServiceUrl, Constants.Username, Constants.BadPassword);
+            try
+            {
+                //Overwrite service opaque
+                session.Opaque = NonceGenerator.Generate();
                 using (session.ExecuteRequest()) { }
             }
             catch (WebException ex)
