@@ -25,9 +25,5 @@ namespace WcfHttpAuth
             return DateTime.Parse(dateString, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).ToUniversalTime();
         }
 
-        public static DateTime FromEpochString(string epochString)
-        {
-            return new DateTime((long.Parse(epochString) * tickResolution) + baseTicks).ToUniversalTime();
-        }
     }
 }
