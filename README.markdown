@@ -1,7 +1,7 @@
 
 HTTP Authentication for WCF REST services
 ------------
-This project implements the following authentication method for WCF REST Services:
+This project implements the following authentication methods for WCF REST Services:
 
 - HTTP Basic Authentication
 - HTTP Digest Authentication
@@ -10,8 +10,8 @@ This project implements the following authentication method for WCF REST Service
 Solution Contents
 ------------
 * WcfHttpAuth - Core implementation
-* Server - A Website that contains a sample WCF REST service for each of the authentication methods implemented
-* WcfHttAuth.IntegrationTests - BDD specs that test the different authentication methods used in the Server site.
+* Server - A Website that contains a sample WCF REST service for each of the authentication methods implemented in WcfHttpAuth
+* WcfHttAuth.IntegrationTests - BDD specs that test the different authentication methods by using the Server site. (Run the Server site before running the tests)
 
 References
 -----------
