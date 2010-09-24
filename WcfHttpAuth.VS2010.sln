@@ -8,6 +8,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHttpAuth.IntegrationTests", "WcfHttpAuth.IntegrationTests\WcfHttpAuth.IntegrationTests.csproj", "{EB57D9A2-B349-45A4-9793-F9B04DD0C5C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85410DD9-71CC-41BD-982B-27E7CC3BF20D}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.markdown = README.markdown
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{06DE03D0-566E-4EF0-9FDC-C1BB30B281C3}"
 EndProject
