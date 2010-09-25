@@ -1,5 +1,5 @@
 
-HTTP Authentication for WCF REST services
+HTTP Authentication methods for WCF REST services
 ------------
 This project implements the following authentication methods for WCF REST Services:
 
@@ -16,4 +16,5 @@ Solution Contents
 References
 -----------
 This projects makes use of the WCF REST Starter Kit and was inspired by this [post](http://weblogs.asp.net/cibrax/archive/2009/03/20/custom-basic-authentication-for-restful-services.aspx)
+[This is the introductory post from my blog.](http://javiercrespoalvez.com/2010/09/securing-wcf-rest-services-for.html)
 
