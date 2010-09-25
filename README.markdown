@@ -9,8 +9,8 @@ This project implements the following authentication methods for WCF REST Servic
 
 Solution Contents
 ------------
-* WcfHttpAuth - Core implementation
-* Server - A Website that contains a sample WCF REST service for each of the authentication methods implemented in WcfHttpAuth
+* WcfRestAuth - Core implementation
+* Server - A Website that contains a sample WCF REST service for each of the authentication methods implemented in WcfRestAuth
 * WcfHttAuth.IntegrationTests - BDD specs that test the different authentication methods by using the Server site. (Run the Server site before running the tests)
 
 References

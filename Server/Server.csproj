@@ -90,13 +90,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfHttpAuth\WcfHttpAuth.csproj">
-      <Project>{E3FC5179-613F-4482-B5F0-D59B56FD08B0}</Project>
-      <Name>WcfHttpAuth</Name>
-    </ProjectReference>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\WcfRestAuth\WcfRestAuth.csproj">
+      <Project>{E3FC5179-613F-4482-B5F0-D59B56FD08B0}</Project>
+      <Name>WcfRestAuth</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

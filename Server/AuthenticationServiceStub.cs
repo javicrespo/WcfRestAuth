@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WcfHttpAuth.Basic;
-using WcfHttpAuth.Digest;
-using WcfHttpAuth.Wsse;
-using WcfHttpAuth;
+using WcfRestAuth.Basic;
+using WcfRestAuth.Digest;
+using WcfRestAuth.Wsse;
+using WcfRestAuth;
 
 namespace Server
 {

@@ -6,7 +6,7 @@ using System.ServiceModel.Activation;
 using System.Web;
 using System.ServiceModel.Web;
 using Microsoft.ServiceModel.Web;
-using WcfHttpAuth.Wsse;
+using WcfRestAuth.Wsse;
 
 namespace Server
 {
