@@ -27,7 +27,7 @@ namespace WcfHttpAuth.Wsse
         /// <param name="provider">The provider.</param>
         /// <param name="realm">The realm.</param>
         public WsseRequestInterceptor(IPasswordProvider provider, string realm)
-            : this(provider, realm, new TimestampRangeValidator(), new InMemoryNonceStore())
+            : this(provider, realm, new DefaultTimestampRangeValidator(), new InMemoryNonceStore())
         {
            
         }
@@ -48,18 +48,30 @@ namespace WcfHttpAuth.Wsse
             Realm = realm;
         }
 
+        /// <summary>
+        /// Gets or sets the nonce store.
+        /// </summary>
+        /// <value>The nonce store.</value>
         protected INonceStore NonceStore
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the timestamp range validator.
+        /// </summary>
+        /// <value>The timestamp range validator.</value>
         protected ITimestampRangeValidator TimestampRangeValidator
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the realm.
+        /// </summary>
+        /// <value>The realm.</value>
         protected string Realm
         {
             get;

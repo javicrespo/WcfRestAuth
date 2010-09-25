@@ -10,7 +10,7 @@ using System.Text;
 
 namespace WcfHttpAuth
 {
-    class SecurityContextManager
+    internal class SecurityContextManager
     {
         public static void InitializeSecurityContext(Message request, string username)
         {

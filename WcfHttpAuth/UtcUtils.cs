@@ -8,8 +8,6 @@ namespace WcfHttpAuth
 {
     internal static class UtcUtils
     {
-        private const long baseTicks = 621355968000000000;
-        private const long tickResolution = 10000000;
         public static string UtcNowString()
         {
             return UtcString(DateTime.UtcNow);

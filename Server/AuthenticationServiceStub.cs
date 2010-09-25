@@ -9,7 +9,7 @@ using WcfHttpAuth;
 
 namespace Server
 {
-    class AuthenticationServiceStub : IAuthenticationService, IPasswordProvider, IServerDigestProvider
+    class AuthenticationServiceStub : IAuthenticationService, IPasswordProvider, IServerSecretProvider
     {
         public string Username { get; set; }
         public string Password { get; set; }
@@ -30,7 +30,7 @@ namespace Server
             return Password;
         }
 
-        public string RetrieveServerDigest(string username)
+        public string RetrieveServerSecret(string username)
         {
             return DigestUtils.GenerateUserDigest("http://tst.com", "user", "password");
         }

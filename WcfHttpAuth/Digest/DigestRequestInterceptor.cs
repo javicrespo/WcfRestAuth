@@ -27,32 +27,53 @@ namespace WcfHttpAuth.Digest
         /// </summary>
         /// <param name="provider">The provider.</param>
         /// <param name="realm">The realm.</param>
-        public DigestRequestInterceptor(IServerDigestProvider provider, string realm)
-            : this(provider, realm, new AspNetCacheSessionStore())
+        public DigestRequestInterceptor(IServerSecretProvider provider, string realm)
+            : this(provider, realm, new DefaultDigestSessionManager())
         {
 
         }
 
-        public DigestRequestInterceptor(IServerDigestProvider provider, string realm, IDigestSessionStore digestSessionStore)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DigestRequestInterceptor"/> class.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="realm">The realm.</param>
+        /// <param name="sessionStore">The session store.</param>
+        public DigestRequestInterceptor(IServerSecretProvider provider, string realm, ISessionStore sessionStore)
+            : this(provider, realm, new DefaultDigestSessionManager(sessionStore))
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DigestRequestInterceptor"/> class.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="realm">The realm.</param>
+        /// <param name="digestSessionManager">The digest session store.</param>
+        public DigestRequestInterceptor(IServerSecretProvider provider, string realm, IDigestSessionManager digestSessionManager)
             : base(false)
         {
-            Provider = provider;
+            SecretProvider = provider;
             Realm = realm;
-            DigestSessionStore = digestSessionStore;
+            DigestSessionManager = digestSessionManager;
         }
 
-        protected INonceStore ClientNonceStore
+
+        /// <summary>
+        /// Gets or sets the digest session manager.
+        /// </summary>
+        /// <value>The digest session manager.</value>
+        protected IDigestSessionManager DigestSessionManager
         {
             get;
             private set;
         }
 
-        protected IDigestSessionStore DigestSessionStore
-        {
-            get;
-            private set;
-        }
-
+        /// <summary>
+        /// Gets or sets the realm.
+        /// </summary>
+        /// <value>The realm.</value>
         protected string Realm
         {
             get;
@@ -60,10 +81,10 @@ namespace WcfHttpAuth.Digest
         }
 
         /// <summary>
-        /// Gets or sets the provider.
+        /// Gets or sets the secret provider.
         /// </summary>
-        /// <value>The provider.</value>
-        protected IServerDigestProvider Provider
+        /// <value>The secret provider.</value>
+        protected IServerSecretProvider SecretProvider
         {
             get;
             private set;
@@ -80,7 +101,7 @@ namespace WcfHttpAuth.Digest
                 var httpRequest = requestContext.RequestMessage.GetHttpRequestMessage();
                 var digestToken = ExtractToken(httpRequest);
                 if (digestToken != null &&
-                    DigestSessionStore.CheckIfServerNonceAndOpaqueExistAndStoreClientNonceIfNotExists(digestToken.ServerNonce, digestToken.Opaque, digestToken.ClientNonce) &&
+                    DigestSessionManager.CheckIfServerNonceAndOpaqueExistAndStoreClientNonceIfNotExists(digestToken.ServerNonce, digestToken.Opaque, digestToken.ClientNonce) &&
                     AuthenticateUser(digestToken, httpRequest.Method))
                 {
                     SecurityContextManager.InitializeSecurityContext(requestContext.RequestMessage,
@@ -100,7 +121,7 @@ namespace WcfHttpAuth.Digest
         private void Unauthorized(ref RequestContext requestContext)
         {
             string nonce = NonceGenerator.Generate(), opaque = NonceGenerator.Generate();
-            DigestSessionStore.Add(nonce, opaque);
+            DigestSessionManager.Add(nonce, opaque);
             RequestContextUtils.Unauthorized(ref requestContext,
                             String.Format("Digest realm=\"{0}\",qop=\"{1}\",nonce=\"{2}\",opaque=\"{3}\"",
                                                     Realm, "auth", nonce, opaque));
@@ -110,7 +131,7 @@ namespace WcfHttpAuth.Digest
 
         private bool AuthenticateUser(DigestToken token, string httpMethod)
         {
-            return token.Verify(Provider.RetrieveServerDigest(token.Username), httpMethod);
+            return token.Verify(SecretProvider.RetrieveServerSecret(token.Username), httpMethod);
         }
 
         private static DigestToken ExtractToken(HttpRequestMessageProperty request)

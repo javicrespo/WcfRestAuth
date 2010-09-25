@@ -6,7 +6,7 @@ using System.IdentityModel.Claims;
 
 namespace WcfHttpAuth
 {
-    class PrincipalAuthorizationPolicy : IAuthorizationPolicy
+    internal class PrincipalAuthorizationPolicy : IAuthorizationPolicy
     {
         private readonly string id = Guid.NewGuid().ToString();
         private readonly IPrincipal user;

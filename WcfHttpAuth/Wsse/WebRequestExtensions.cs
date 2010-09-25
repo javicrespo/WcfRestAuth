@@ -6,8 +6,18 @@ using System.Net;
 
 namespace WcfHttpAuth.Wsse
 {
+    /// <summary>
+    /// Web request extension methods
+    /// </summary>
     public static class WebRequestExtensions
     {
+        /// <summary>
+        /// Adds Wsse username token to the request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="password">The password.</param>
+        /// <returns></returns>
         public static WebRequest WithWsseToken(this WebRequest request, string userName, string password)
         {
             var wsseToken = new WsseToken 
